@@ -8,7 +8,7 @@ namespace TheatricalPlayersRefactoringKata
 {
     public class ComedyPlay : Play
     {
-        public ComedyPlay(string name, string type) : base(name, type)
+        public ComedyPlay(string name) : base(name)
         {
         }
 

@@ -16,29 +16,29 @@ namespace TheatricalPlayersRefactoringKata
             foreach(var perf in invoice.Performances) 
             {
                 var play = plays[perf.PlayID];
-                var thisAmount = 0;
-                switch (play.Type) 
-                {
-                    case "tragedy":
-                        thisAmount = 40000;
-                        if (perf.Audience > 30) {
-                            thisAmount += 1000 * (perf.Audience - 30);
-                        }
-                        break;
-                    case "comedy":
-                        thisAmount = 30000;
-                        if (perf.Audience > 20) {
-                            thisAmount += 10000 + 500 * (perf.Audience - 20);
-                        }
-                        thisAmount += 300 * perf.Audience;
-                        break;
-                    default:
-                        throw new Exception("unknown type: " + play.Type);
-                }
+                var thisAmount = play.ComputePrice((perf.Audience));
+                // switch (play.Type) 
+                // {
+                //     case "tragedy":
+                //         thisAmount = 40000;
+                //         if (perf.Audience > 30) {
+                //             thisAmount += 1000 * (perf.Audience - 30);
+                //         }
+                //         break;
+                //     case "comedy":
+                //         thisAmount = 30000;
+                //         if (perf.Audience > 20) {
+                //             thisAmount += 10000 + 500 * (perf.Audience - 20);
+                //         }
+                //         thisAmount += 300 * perf.Audience;
+                //         break;
+                //     default:
+                //         throw new Exception("unknown type: " + play.Type);
+                // }
                 // add volume credits
                 volumeCredits += Math.Max(perf.Audience - 30, 0);
                 // add extra credit for every ten comedy attendees
-                if ("comedy" == play.Type) volumeCredits += (int)Math.Floor((decimal)perf.Audience / 5);
+                if (play is ComedyPlay) volumeCredits += (int)Math.Floor((decimal)perf.Audience / 5);
 
                 // print line for this order
                 result += String.Format(cultureInfo, "  {0}: {1:C} ({2} seats)\n", play.Name, Convert.ToDecimal(thisAmount / 100), perf.Audience);
