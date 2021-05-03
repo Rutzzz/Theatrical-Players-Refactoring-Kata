@@ -1,3 +1,5 @@
+using System;
+
 namespace TheatricalPlayersRefactoringKata
 {
     public abstract class Play
@@ -6,10 +8,14 @@ namespace TheatricalPlayersRefactoringKata
 
         public string Name { get => _name; set => _name = value; }
 
-        public abstract int ComputePrice(int audience);
-
         public Play(string name) {
             this._name = name;
+        }
+        public abstract int ComputePrice(int audience);
+
+        public virtual int ComputeCredits(int audience)
+        {
+            return Math.Max(audience - 30, 0);
         }
     }
 }

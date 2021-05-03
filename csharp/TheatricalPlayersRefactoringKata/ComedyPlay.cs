@@ -12,6 +12,13 @@ namespace TheatricalPlayersRefactoringKata
         {
         }
 
+        public override int ComputeCredits(int audience)
+        {
+            var credits = base.ComputeCredits(audience);
+            credits += (int)Math.Floor((decimal)audience / 5);
+            return credits;
+        }
+
         public override int ComputePrice(int audience)
         {
             int thisAmount = 30000;
