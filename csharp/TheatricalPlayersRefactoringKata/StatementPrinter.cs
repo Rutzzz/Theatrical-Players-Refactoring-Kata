@@ -27,7 +27,7 @@ namespace TheatricalPlayersRefactoringKata
         {
             CultureInfo cultureInfo = new CultureInfo("en-US");
             var result = new StringBuilder("<html>").AppendLine();
-            result.AppendLine($"  <h1>Stetement for {invoice.Customer}</h1>");
+            result.AppendLine($"  <h1>Statement for {invoice.Customer}</h1>");
             result.AppendLine("  <table>");
             result.AppendLine("    <tr><th>play</th><th>seats</th><th>cost</th></tr>");
             foreach(var (perf, amount) in invoice.Performances) 
