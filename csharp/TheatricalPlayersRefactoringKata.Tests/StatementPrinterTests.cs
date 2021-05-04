@@ -33,10 +33,9 @@ namespace TheatricalPlayersRefactoringKata.Tests
                 new( new TragedyPlay("Othello"), 40)});
             
             StatementPrinter statementPrinter = new StatementPrinter();
-            
-            // Not implemented yet
-            // var result = statementPrinter.PrintAsHtml(invoice);
-            // Approvals.Verify(result);
+
+            //var result = statementPrinter.PrintAsHtml(invoice);
+            //Approvals.Verify(result);
         }
 
         // [Test]

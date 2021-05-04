@@ -30,5 +30,10 @@ namespace TheatricalPlayersRefactoringKata
             
             return result.ToString();
         }
+
+        public string PrintAsHtml(Invoice invoice)
+        {
+            return string.Empty;
+        }
     }
 }
