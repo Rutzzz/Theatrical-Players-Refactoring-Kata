@@ -13,17 +13,13 @@ namespace TheatricalPlayersRefactoringKata.Tests
         [UseReporter(typeof(DiffReporter))]
         public void test_statement_plain_text_example()
         {
-            var plays = new Dictionary<string, Play>();
-            plays.Add("hamlet", new TragedyPlay("Hamlet"));
-            plays.Add("as-like", new ComedyPlay("As You Like It"));
-            plays.Add("othello", new TragedyPlay("Othello"));
-
-            Invoice invoice = new Invoice("BigCo", new List<Performance>{new Performance("hamlet", 55),
-                new Performance("as-like", 35),
-                new Performance("othello", 40)});
+            Invoice invoice = new Invoice("BigCo", new List<Performance>{
+                new Performance( new TragedyPlay("Hamlet"), 55),
+                new Performance( new ComedyPlay("As You Like It"), 35),
+                new Performance( new TragedyPlay("Othello"), 40)});
             
             StatementPrinter statementPrinter = new StatementPrinter();
-            var result = statementPrinter.Print(invoice, plays);
+            var result = statementPrinter.Print(invoice);
             
             Approvals.Verify(result);
         }
@@ -32,19 +28,15 @@ namespace TheatricalPlayersRefactoringKata.Tests
         [UseReporter(typeof(DiffReporter))]
         public void test_statement_html_example()
         {
-            var plays = new Dictionary<string, Play>();
-            plays.Add("hamlet", new TragedyPlay("Hamlet"));
-            plays.Add("as-like", new ComedyPlay("As You Like It"));
-            plays.Add("othello", new TragedyPlay("Othello"));
-
-            Invoice invoice = new Invoice("BigCo", new List<Performance>{new Performance("hamlet", 55),
-                new Performance("as-like", 35),
-                new Performance("othello", 40)});
+            Invoice invoice = new Invoice("BigCo", new List<Performance>{
+                new Performance( new TragedyPlay("Hamlet"), 55),
+                new Performance( new ComedyPlay("As You Like It"), 35),
+                new Performance( new TragedyPlay("Othello"), 40)});
             
             StatementPrinter statementPrinter = new StatementPrinter();
             
             // Not implemented yet
-            // var result = statementPrinter.PrintAsHtml(invoice, plays);
+            // var result = statementPrinter.PrintAsHtml(invoice);
             // Approvals.Verify(result);
         }
 
